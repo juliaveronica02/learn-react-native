@@ -1,0 +1,1 @@
+* see console.log output when running: react-native log-android.

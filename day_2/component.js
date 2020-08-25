@@ -1,7 +1,58 @@
-import React from 'react';
-import {StyleSheet, Text, View, Linking} from 'react-native';
+import React, {useState} from 'react';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Linking,
+  Button,
+  Platform,
+  TouchableNativeFeedback,
+  Image,
+} from 'react-native';
+import ImagePicker from 'react-native-image-picker';
 
 const Component = () => {
+  const [avatarSource, setAvatarSource] = useState('');
+  const onPressButton = () => {
+    const options = {
+      title: 'Select Avatar',
+      customButtons: [{name: 'fb', title: 'Choose Photo from Facebook'}],
+      storageOptions: {
+        skipBackup: true,
+        path: 'images',
+      },
+    };
+
+    /**
+     * The first arg is the options object for customization (it can also be null or omitted for default options),
+     * The second arg is the callback which sends object: response (more info in the API Reference)
+     */
+    ImagePicker.showImagePicker(options, (response) => {
+      console.log('Response = ', response);
+
+      if (response.didCancel) {
+        console.log('User cancelled image picker');
+      } else if (response.error) {
+        console.log('ImagePicker Error: ', response.error);
+      } else if (response.customButton) {
+        console.log('User tapped custom button: ', response.customButton);
+      } else {
+        const source = {uri: response.uri};
+
+        // You can also display the image using data:
+        // const source = { uri: 'data:image/jpeg;base64,' + response.data };
+
+        // this.setState({
+        //   avatarSource: source,
+        // });
+        setAvatarSource(response.data);
+      }
+    });
+
+    alert('You tapped the button');
+  };
+  console.log(avatarSource);
+
   return (
     <View>
       {/* service and desc text. */}
@@ -17,22 +68,85 @@ const Component = () => {
           justifyContent: 'space-around',
           marginTop: 10,
         }}>
-        <View style={{height: 50, width: 50, backgroundColor: 'red'}} />
-        <View style={{height: 50, width: 50, backgroundColor: 'black'}} />
-        <View style={{height: 50, width: 50, backgroundColor: 'green'}} />
-        <View style={{height: 50, width: 50, backgroundColor: 'blue'}} />
+        <View>
+          <View
+            style={{
+              height: 50,
+              width: 50,
+              backgroundColor: 'red',
+              borderRadius: 50,
+            }}
+          />
+          <Text style={{alignSelf: 'center'}}>Buy</Text>
+          {/* <Button onPress={()=> {
+            alert("You tapped the button")
+          }}
+          title="Press Me" /> */}
+          <TouchableNativeFeedback
+            onPress={() => onPressButton()}
+            background={
+              Platform.OS === 'android'
+                ? TouchableNativeFeedback.SelectableBackground()
+                : ''
+            }>
+            <View style={styles.button}>
+              <Text style={styles.buttonText}>
+                TouchableNativeFeedback
+                {Platform.OS !== 'android' ? '(Android only)' : ''}
+              </Text>
+            </View>
+          </TouchableNativeFeedback>
+          <View>
+            <Image
+              source={{
+                uri: 'data:image/png;base64,' + avatarSource,
+              }}
+              style={{width: 50, height: 50}}
+            />
+            <Text>asdf</Text>
+          </View>
+        </View>
+        <View>
+          <View
+            style={{
+              height: 50,
+              width: 50,
+              backgroundColor: 'black',
+              borderRadius: 50,
+            }}
+          />
+          <Text style={{alignSelf: 'center'}}>Sell</Text>
+        </View>
+        <View>
+          <View
+            style={{
+              height: 50,
+              width: 50,
+              backgroundColor: 'green',
+              borderRadius: 50,
+            }}
+          />
+          <Text style={{alignSelf: 'center'}}>Repair</Text>
+        </View>
+        <View>
+          <View
+            style={{
+              height: 50,
+              width: 50,
+              backgroundColor: 'blue',
+              borderRadius: 50,
+            }}
+          />
+          <Text style={{alignSelf: 'center'}}>Protect</Text>
+        </View>
       </View>
       {/* div for text. */}
-      <View
+      {/* <View
         style={{
           flexDirection: 'row',
           justifyContent: 'space-around',
-        }}>
-        <Text style={{marginLeft: 10, alignSelf: 'center'}}>Buy</Text>
-        <Text style={{marginLeft: 25, alignSelf: 'center'}}>Sell</Text>
-        <Text style={{marginLeft: 16, alignSelf: 'center'}}>Repair</Text>
-        <Text style={{alignSelf: 'center'}}>Protect</Text>
-      </View>
+        }}> */}
+      {/* </View> */}
       {/* Devices */}
       <View>
         <Text style={styles.devices}>Devices</Text>
@@ -139,6 +253,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#eee',
     alignItems: 'center',
     justifyContent: 'center',
+  },
+  button: {
+    marginBottom: 30,
+    width: 260,
+    alignItems: 'center',
+    backgroundColor: '#2196F3',
   },
 });
 
