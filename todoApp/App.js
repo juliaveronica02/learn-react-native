@@ -34,7 +34,7 @@ const todo = () => {
       <Test />
       <View style={styles.content}>
         {/* todo form. */}
-        <AddTodo submitHandler={submitHandler}/>
+        <AddTodo submitHandler={submitHandler} />
         <View style={styles.list}>
           {/* item list */}
           <FlatList data={todo} renderItem={({item})=> (
