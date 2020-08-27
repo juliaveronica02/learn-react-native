@@ -1,114 +1,155 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow strict-local
- */
+import React, {useState, useEffect} from 'react';
+import {StyleSheet, Text, View, Image} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import axios from 'axios';
+import {ScrollView} from 'react-native-gesture-handler';
 
-import React from 'react';
-import {
-  SafeAreaView,
-  StyleSheet,
-  ScrollView,
-  View,
-  Text,
-  StatusBar,
-} from 'react-native';
+function HomeScreen() {
+  const [movie, setMovie] = useState([]);
+  const URL =
+    'https://api.themoviedb.org/3/trending/all/day?api_key=8ea21e1f0ed32fbc7256cfb9e61b9e4b';
+  useEffect(() => {
+    axios
+      .get(`${URL}`)
+      .then((res) => {
+        setMovie(res.data.results);
+        console.log('res', res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
-import {
-  Header,
-  LearnMoreLinks,
-  Colors,
-  DebugInstructions,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
-
-const App: () => React$Node = () => {
+  console.log('movie', movie);
+  const mapData = movie.map((item) => {
+    const imageURL = 'https://image.tmdb.org/t/p/w500';
+    // console.log("image", imageURL);
+    return (
+      <View style={styles.scoll}>
+        <View key={item.id} style={styles.child}>
+          <Image
+            source={{uri: `${imageURL}/${item.backdrop_path}`}}
+            style={{
+              height: 100,
+              width: 120,
+              justifyContent: 'center',
+              alignSelf: 'center',
+              marginTop: 10,
+            }}
+          />
+          <Text style={styles.container}>{item.title}</Text>
+          <Text style={{color: '#777', paddingTop: 5, margin: 7}}>
+            {item.overview}
+          </Text>
+          <Text style={styles.textLeft}>⭐: {item.vote_average}</Text>
+          <Text style={styles.textRight}>💙: {item.popularity}</Text>
+        </View>
+      </View>
+    );
+  });
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-          <Header />
-          {global.HermesInternal == null ? null : (
-            <View style={styles.engine}>
-              <Text style={styles.footer}>Engine: Hermes</Text>
-            </View>
-          )}
-          <View style={styles.body}>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Step One</Text>
-              <Text style={styles.sectionDescription}>
-                Edit <Text style={styles.highlight}>App.js</Text> to change this
-                screen and then come back to see your edits.
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>See Your Changes</Text>
-              <Text style={styles.sectionDescription}>
-                <ReloadInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Debug</Text>
-              <Text style={styles.sectionDescription}>
-                <DebugInstructions />
-              </Text>
-            </View>
-            <View style={styles.sectionContainer}>
-              <Text style={styles.sectionTitle}>Learn More</Text>
-              <Text style={styles.sectionDescription}>
-                Read the docs to discover what to do next:
-              </Text>
-            </View>
-            <LearnMoreLinks />
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    <View>
+      <View>
+        <Text style={styles.allMovie}>All Movie</Text>
+      </View>
+      {/* <ScrollView horizontal={true}> */}
+      <ScrollView>{mapData}</ScrollView>
+    </View>
+  );
+}
+
+function Movie() {
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Movie!</Text>
+    </View>
+  );
+}
+
+function Details() {
+  return (
+    <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+      <Text>Details!</Text>
+    </View>
+  );
+}
+
+const Tab = createBottomTabNavigator();
+
+function MyTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="Home" component={HomeScreen} />
+      <Tab.Screen name="Movie" component={Movie} />
+      <Tab.Screen name="Details" component={Details} />
+    </Tab.Navigator>
+  );
+}
+const App = () => {
+  return (
+    <NavigationContainer>
+      <MyTabs />
+    </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  scrollView: {
-    backgroundColor: Colors.lighter,
+  container: {
+    color: '#A9A9A9',
+    paddingTop: 5,
+    marginBottom: 2,
+    fontSize: 20,
+    textAlign: 'center',
   },
-  engine: {
+  allMovie: {
+    color: 'white',
+    fontWeight: 'bold',
+    height: 80,
+    width: '100%',
+    fontSize: 30,
+    paddingTop: 15,
+    textAlign: 'center',
+    backgroundColor: '#6262ff',
+    shadowColor: '#000',
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 1.41,
+    elevation: 2,
+  },
+  scroll: {
+    flex: 1,
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    paddingBottom: 16,
+    justifyContent: 'space-between',
+  },
+  child: {
+    marginLeft: 5,
+    backgroundColor: 'white',
+    width: '100%',
+    height: 350,
+    aspectRatio: 1,
+    marginBottom: 23,
+  },
+  textLeft: {
+    position: 'absolute',
+    left:0,
+    bottom:0,
+    color: '#A9A9A9',
+    marginBottom: 20,
+    paddingLeft: 15,
+  },
+  textRight: {
+    paddingRight: 15,
     position: 'absolute',
     right: 0,
-  },
-  body: {
-    backgroundColor: Colors.white,
-  },
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
-  },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
-    color: Colors.black,
-  },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-    color: Colors.dark,
-  },
-  highlight: {
-    fontWeight: '700',
-  },
-  footer: {
-    color: Colors.dark,
-    fontSize: 12,
-    fontWeight: '600',
-    padding: 4,
-    paddingRight: 12,
-    textAlign: 'right',
+    bottom: 0,
+    color: '#A9A9A9',
+    marginBottom: 20,
   },
 });
-
 export default App;
