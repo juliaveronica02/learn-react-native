@@ -4,3 +4,29 @@
 ## Error: Could not get BatchedBridge, make sure your bundle is packaged properly”.
 * react-native run-android.
 * react-native start --reset-cache.
+
+## componentDidMount.
+ useEffect(() => {
+      axios
+        .get(`${URL}`)
+        .then((res) => {
+          setMovie(res.data.results);
+          console.log('res', res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, []);
+
+## componentDidUpdate.
+ useEffect(() => {
+      axios
+        .get(`${URL}`)
+        .then((res) => {
+          setMovie(res.data.results);
+          console.log('res', res);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }, [URL]);
