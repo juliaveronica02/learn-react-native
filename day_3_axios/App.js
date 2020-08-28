@@ -2,9 +2,8 @@ import React from 'react';
 import { Text, View} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import HomeScreen from './components/homeScree'
-import axios from 'axios';
-
+// import HomeScreen from './components/homeScreen'
+import HomeScreen from "./components/homeScreen2"
 function Movie() {
   return (
     <View style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>

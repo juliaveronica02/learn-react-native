@@ -24,7 +24,7 @@ function HomeScreen() {
       const imageURL = 'https://image.tmdb.org/t/p/w500';
       // console.log("image", imageURL);
       return (
-        <View style={styles.scoll}>
+        <View style={styles.parent}>
           <View key={item.id} style={styles.child}>
             <Image
               source={{uri: `${imageURL}/${item.backdrop_path}`}}
@@ -82,7 +82,7 @@ function HomeScreen() {
       shadowRadius: 1.41,
       elevation: 2,
     },
-    scroll: {
+    parent: {
       flex: 1,
       flexDirection: 'row',
       flexWrap: 'wrap',
