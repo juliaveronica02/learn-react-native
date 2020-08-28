@@ -1,10 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {StyleSheet, Text, View, Image} from 'react-native';
+import {StyleSheet, Text, View, Image, TouchableOpacity, ScrollView} from 'react-native';
 import axios from 'axios';
-import {ScrollView} from 'react-native-gesture-handler';
-
+import Modal from "../components/Details/modal"
 function HomeScreen() {
   const [movie, setMovie] = useState([]);
+  const [modalVisible, setModalVisible] = useState(false);
   const URL =
     'https://api.themoviedb.org/3/trending/all/day?api_key=8ea21e1f0ed32fbc7256cfb9e61b9e4b';
   useEffect(() => {
@@ -24,7 +24,7 @@ function HomeScreen() {
     const imageURL = 'https://image.tmdb.org/t/p/w500';
     // console.log("image", imageURL);
     return (
-      <View key={item.id} style={styles.container}>
+      <TouchableOpacity onPress={() => setModalVisible(true)} key={item.id} style={styles.container}>
         <View style={styles.thumbnail}>
           <Image
             source={{uri: `${imageURL}/${item.backdrop_path}`}}
@@ -36,9 +36,10 @@ function HomeScreen() {
           <Text style={styles.textLeft}>{item.media_type}</Text>
           <Text style={styles.textRight}>⭐: {item.vote_average}</Text>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   });
+  console.log("modal", modalVisible);
   return (
     <View>
       <View>
@@ -47,6 +48,7 @@ function HomeScreen() {
       {/* <ScrollView horizontal={true}> slide to left and right.*/} 
       {/* vertical scroll: scrollview. */}
       <ScrollView style={{backgroundColor: '#92a8d1', paddingTop: 3, marginBottom: 60 }}>{mapData}</ScrollView> 
+      <Modal modal={modalVisible} closeModal={(e) => {setModalVisible(e)}} />
     </View>
   );
 }
