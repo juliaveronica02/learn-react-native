@@ -4,7 +4,10 @@ import axios from 'axios';
 import Modal from "../components/Details/modal"
 function HomeScreen() {
   const [movie, setMovie] = useState([]);
-  const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible, setModalVisible] = useState({
+    id: null,
+    isShow: false,
+  });
   const URL =
     'https://api.themoviedb.org/3/trending/all/day?api_key=8ea21e1f0ed32fbc7256cfb9e61b9e4b';
   useEffect(() => {
@@ -12,19 +15,19 @@ function HomeScreen() {
       .get(`${URL}`)
       .then((res) => {
         setMovie(res.data.results);
-        console.log('res', res);
+        // console.log('res', res);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  console.log('movie', movie);
+  // console.log('movie', movie);
   const mapData = movie.map((item) => {
     const imageURL = 'https://image.tmdb.org/t/p/w500';
     // console.log("image", imageURL);
     return (
-      <TouchableOpacity onPress={() => setModalVisible(true)} key={item.id} style={styles.container}>
+      <TouchableOpacity onPress={() => setModalVisible({id: item.id, isShow: true})} key={item.id} style={styles.container}>
         <View style={styles.thumbnail}>
           <Image
             source={{uri: `${imageURL}/${item.backdrop_path}`}}
@@ -39,7 +42,7 @@ function HomeScreen() {
       </TouchableOpacity>
     );
   });
-  console.log("modal", modalVisible);
+  // console.log("modal", modalVisible);
   return (
     <View>
       <View>
@@ -48,7 +51,7 @@ function HomeScreen() {
       {/* <ScrollView horizontal={true}> slide to left and right.*/} 
       {/* vertical scroll: scrollview. */}
       <ScrollView style={{backgroundColor: '#92a8d1', paddingTop: 3, marginBottom: 60 }}>{mapData}</ScrollView> 
-      <Modal modal={modalVisible} closeModal={(e) => {setModalVisible(e)}} />
+      <Modal modal={modalVisible} closeModal={(e) => {setModalVisible({id: null, isShow: false})}} />
     </View>
   );
 }
