@@ -21,4 +21,13 @@
 Hardware specifications with this following conditions:
 * Processor >= Core i5
 * RAM >= 8Gb
-* Free Disk space >= 40Gb (SSD is better than HDD)
+* Free Disk space >= 40Gb (SSD is better than HDD) <br>
+(Notice: if hardware spec doesn't meet the above conditions, must be very patient).
+
+## Node.js Installation.
+node.js to run Javascript in our machine.
+
+## What is Node.js?
+Node.JS is a runtime environment that will let you run Javascript directly in your machine. It means that allows you to write server-side applications in Javascript. <br>
+
+You might wonder, we are able to run Javascript without Node, then why do we need Node.JS? Natively, Javascript only runs on web browser, that was why we need Node.JS. Node.js was built by using V8 Engine of Chrome Browser (The fastest Javascript Engine)
