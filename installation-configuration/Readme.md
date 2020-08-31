@@ -1,4 +1,4 @@
-# Preparation.
+### Preparation.
 * Linux --> Debian Based
    * Linux Mint
    * Ubuntu 18.04 LTS (recommended)
