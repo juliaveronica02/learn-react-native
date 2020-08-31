@@ -365,3 +365,18 @@ classpath("com.android.tools.build:gradle:3.6.3")
 9. sudo: Whenever you're getting a Permission denied, Authorization failed or something like that use sudo.
 10. df: This command is used to check disk space usage on a linux system. The most common usage is like below, used along with the -h flag.
 11. du: If you need to quickly check disk space usage of a file or directory.
+
+## Linux shortcut.
+* ctrl+alt+T: ubuntu terminal shortcut.
+* Ctrl+Alt+L: Locks the screen.
+* Ctrl+Alt+D: Show desktop.
+* Alt+Tab: Switch between running applications.
+* Alt+F2: Run console.
+* Ctrl+Q: Close an application window.
+* Ctrl+Alt+arrow: Move between workspaces.
+* Ctrl+Alt+Del: Log out.
+* custom: Go to Settings->Devices->Keyboard.
+
+## Javascript.
+* Undefined: https://icalrn.id/hiruk-pikuk-undefined/.
+* algoritma: https://codeva.co.id/pengertian-algoritma/.
