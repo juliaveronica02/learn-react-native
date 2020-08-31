@@ -344,3 +344,24 @@ cd android && ./gradlew clean && ./gradlew :app:bundleRelease
 ```
 classpath("com.android.tools.build:gradle:3.6.3")
 ```
+
+## Basic linux commands list.
+1. pwd: This command print the location of your current working directory.
+2. ls: (ls /LS) is one of the most used basic linux commands, used to print contents of a directory, by default it lists contents of current working directory (pwd). Example, use /ls /usr/bin to list contents of the /usr/bin folder.
+3. cd: Clarification, assume you're on your Home directory, you need to go to the /usr/local/share/fonts directory, use cd /usr/local/share/fonts. If you need to move one directory up, use "cd .." and go straight to your Home folder with cd, and use cd - to go back to your last working directory.
+4. cp: You can copy files and directories with this command. Typical usage is like cp file_a file_1_copy or cp directory_a dir_a_copy Also don't forget to use proper path when you're coping something to different location.
+5. mv: used to move or rename directories and files. To rename a file use mv old_name new_name. Some useful arguments to use with the mv command are:
+   * -n , don't overwrite an existing file.
+   * -i , prompt before overwrite
+   * -f , force overwrite, no prompt
+   * -u , rename or move only when source file is newer than destination file, or missing.
+   * Note: If you're getting the Permission denied error, then you've to use the sudo command with mv, example below.
+   ```
+   sudo mv old_file_name  new_file_name
+   ```
+6. rm: to remove directory or files. Like use rm -r /tmp/backup to remove everything that folder. Of course you've to be careful before removing anything.
+7. mkdir: to make a new directory in linux.  Example, use mkdir my_new_dir to make a new directory named my_new_directory. The -p argument is useful, when you don't want to make parent directories manually.
+8. rmdir: remove a directory, use this command. As example, use rmdir my_dir to remove that specific directory.
+9. sudo: Whenever you're getting a Permission denied, Authorization failed or something like that use sudo.
+10. df: This command is used to check disk space usage on a linux system. The most common usage is like below, used along with the -h flag.
+11. du: If you need to quickly check disk space usage of a file or directory.
