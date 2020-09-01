@@ -1,4 +1,4 @@
-const API_TOKEN = "b6c8ed1fb1ce776fb38145510fa3fa16"
+const API_TOKEN = "8ea21e1f0ed32fbc7256cfb9e61b9e4b"
 
 export function getFilmFromApiByText(text){
 
