@@ -45,8 +45,7 @@ class Search extends React.Component{
         return (
             <View style={ style.main_container }>
                 <TextInput onSubmitEditing={() => this._loadFilms()} onChangeText={(text) => this._searchTextInputChanged(text)} style={ style.textinput } placeholder="Search Movie..."/>
-                <Button style={{ height: 50 }} title="Rechercer" onPress={() => this._loadFilms()}/>
-
+                {/* <Button style={style.Button} title="Search" onPress={() => this._loadFilms()}/> */}
                 <FlatList
                     data={this.state.films}
                     keyExtractor={(item) => item.id.toString() }
@@ -62,11 +61,11 @@ const style = StyleSheet.create({
 
     main_container: {
         marginTop: 20,
-        flex: 1
+        flex: 2
     },
     textinput: {
-        marginLeft: 5, 
-        marginRight: 5, 
+        marginLeft: 10, 
+        width: '93%',
         height: 50, 
         borderColor: '#000000', 
         borderWidth: 1, 

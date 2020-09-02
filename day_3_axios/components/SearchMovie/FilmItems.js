@@ -40,8 +40,6 @@ class FilmItem extends React.Component {
 }
 
 const style = StyleSheet.create({
-  // Utilisation de l'API
-
   main_container: {
     height: 190,
     flex: 1,
@@ -101,7 +99,6 @@ const style = StyleSheet.create({
     color: 'grey',
     margin: 5,
   },
-  title_text: {},
 });
 
 export default FilmItem;
