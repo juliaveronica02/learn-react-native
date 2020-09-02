@@ -46,29 +46,25 @@ function Modals(props) {
           // closeModal(false) (1. example).
           props.closeModal(false);
         }}>
-        <ScrollView contentContainerStyle={styles.contentContainer}>
-          <View style={styles.mainSection}>
+        <View style={styles.mainSection}>
+          <View>
             <Image
               source={{uri: `${imageURL}/${movieDetail.poster_path}`}}
               // style={{width: 70, height: 81}}
               style={styles.detailsImage}
             />
-            <View style={styles.rightPane}>
-              <Text style={styles.movieTitle}>
-                {movieDetail.original_title}
-              </Text>
-              <Text>{movieDetail.release_date}</Text>
-              <View style={styles.Wrapper}>
-                <Text style={styles.Text}>NR</Text>
-              </View>
-              <Text>{movieDetail.vote_average}</Text>
-            </View>
           </View>
-          <View style={styles.separator} />
-          <Text>{movieDetail.overview}</Text>
-          <View style={styles.separator} />
-          <Text>{movieDetail.abridged_cast}</Text>
-        </ScrollView>
+          <View style={styles.rightPane}>
+            <Text style={styles.movieTitle}>{movieDetail.original_title}</Text>
+            <Text style={styles.date}>{movieDetail.release_date}</Text>
+            <Text style={styles.rate}>{movieDetail.vote_average}</Text>
+          </View>
+          
+        </View>
+        <View style={styles.separator}>
+          <Text style={{color: "white"}}>{movieDetail.overview}</Text>
+          <Text style={{color: "white"}}>{movieDetail.abridged_cast}</Text>
+        </View>
 
         <TouchableHighlight
           style={{...styles.openButton, backgroundColor: '#2196F3'}}
@@ -116,21 +112,36 @@ const styles = StyleSheet.create({
   },
   mainSection: {
     flexDirection: 'row',
+    margin: 20,
+    backgroundColor: 'grey',
   },
   detailsImage: {
+    margin: 20,
     width: 134,
     height: 200,
-    backgroundColor: '#eaeaea',
     marginRight: 10,
   },
   rightPane: {
     justifyContent: 'space-between',
     flex: 1,
+    marginBottom: 30,
+    color: 'white',
   },
   movieTitle: {
     flex: 1,
+    fontSize: 18,
+    color: 'white',
+    marginTop: 25,
+  },
+  date: {
     fontSize: 16,
-    fontWeight: '500',
+    color: 'white',
+    marginTop: 10,
+  },
+  rate: {
+    fontSize: 16,
+    color: 'white',
+    marginTop: 10,
   },
   Wrapper: {
     alignSelf: 'flex-start',
@@ -142,12 +153,12 @@ const styles = StyleSheet.create({
   Text: {
     fontFamily: 'Palatino',
     fontSize: 13,
-    fontWeight: '500',
   },
   separator: {
-    backgroundColor: 'rgba(0, 0, 0, 0.1)',
-    height: StyleSheet.hairlineWidth,
-    marginVertical: 10,
+    backgroundColor: 'grey',
+    marginLeft: 20,
+    marginRight: 20,
+    padding: 10,
   },
 });
 export default Modals;
