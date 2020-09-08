@@ -6,10 +6,12 @@ import {
   TouchableHighlight,
   View,
   Image,
+  Button,
   ScrollView,
+ TouchableOpacity 
 } from 'react-native';
 import axios from 'axios';
-
+import Details from "./Detail"
 // function Modals({modal, closeModal}){ (1. example using {}).
 function Modals(props) {
   // 2. example using props.
@@ -46,24 +48,30 @@ function Modals(props) {
           // closeModal(false) (1. example).
           props.closeModal(false);
         }}>
-        <View style={styles.mainSection}>
-          <View>
-            <Image
-              source={{uri: `${imageURL}/${movieDetail.poster_path}`}}
-              // style={{width: 70, height: 81}}
-              style={styles.detailsImage}
-            />
+        <View style={styles.top}>
+          <View style={styles.mainSection}>
+            <View>
+              <Image
+                source={{uri: `${imageURL}/${movieDetail.poster_path}`}}
+                // style={{width: 70, height: 81}}
+                style={styles.detailsImage}
+              />
+            </View>
+            <View style={styles.rightPane}>
+              <Text style={styles.movieTitle}>
+                {movieDetail.original_title}
+              </Text>
+              <Text style={styles.date}>{movieDetail.release_date}</Text>
+              <Text style={styles.rate}>{movieDetail.vote_average}</Text>
+            </View>
           </View>
-          <View style={styles.rightPane}>
-            <Text style={styles.movieTitle}>{movieDetail.original_title}</Text>
-            <Text style={styles.date}>{movieDetail.release_date}</Text>
-            <Text style={styles.rate}>{movieDetail.vote_average}</Text>
+          <View style={styles.separator}>
+            <Text style={{color: 'white', fontSize: 20, marginBottom: 5}}>
+              Description:{' '}
+            </Text>
+            <Text style={{color: 'white'}}>{movieDetail.overview}</Text>
+            <Text style={{color: 'white'}}>{movieDetail.abridged_cast}</Text>
           </View>
-          
-        </View>
-        <View style={styles.separator}>
-          <Text style={{color: "white"}}>{movieDetail.overview}</Text>
-          <Text style={{color: "white"}}>{movieDetail.abridged_cast}</Text>
         </View>
 
         <TouchableHighlight
@@ -84,11 +92,23 @@ function Modals(props) {
         }}>
         <Text style={styles.textStyle}>Show Modal</Text>
       </TouchableHighlight>
+      <View>
+        <TouchableOpacity>
+          <Details/>
+        </TouchableOpacity>
+      </View>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
+  top: {
+    backgroundColor: 'gray',
+    marginTop: 10,
+    marginLeft: 10,
+    marginRight: 10,
+    borderRadius: 20,
+  },
   centeredView: {
     flex: 1,
     justifyContent: 'center',
@@ -96,7 +116,7 @@ const styles = StyleSheet.create({
     marginTop: 22,
   },
   openButton: {
-    marginTop: 50,
+    marginTop: 10,
     backgroundColor: '#F194FF',
     borderRadius: 20,
     padding: 10,
@@ -112,8 +132,6 @@ const styles = StyleSheet.create({
   },
   mainSection: {
     flexDirection: 'row',
-    margin: 20,
-    backgroundColor: 'grey',
   },
   detailsImage: {
     margin: 20,
@@ -155,10 +173,10 @@ const styles = StyleSheet.create({
     fontSize: 13,
   },
   separator: {
-    backgroundColor: 'grey',
     marginLeft: 20,
     marginRight: 20,
-    padding: 10,
+    paddingRight: 10,
+    paddingLeft: 10,
   },
 });
 export default Modals;

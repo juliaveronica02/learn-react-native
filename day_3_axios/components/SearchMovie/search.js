@@ -4,20 +4,20 @@ import FilmItem from './FilmItems'
 import { getFilmFromApiByText } from './tmdbApi'
 
 class Search extends React.Component{ 
-
     constructor(props){
         super(props)
         this.state = {
             films: [],
-            isLoading: false
+            isLoading: false,
+            text: ""
         }
         this.SearchedText = ""
     }
     // loading.
     _loadFilms(){
         this.setState({ isLoading : true })
-        if(this.SearchedText.length > 0){
-            getFilmFromApiByText(this.SearchedText).then(data => 
+        if(this.state.text.length > 0){
+            getFilmFromApiByText(this.state.text).then(data => 
                 this.setState({
                     films: data.results,
                     isLoading: false
@@ -38,6 +38,7 @@ class Search extends React.Component{
 
     _searchTextInputChanged(text){
         this.SearchedText = text
+        this.setState ({text})
     }
 
     render() {

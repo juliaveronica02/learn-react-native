@@ -8,6 +8,8 @@ target 'day_3_axios' do
 
   use_react_native!(:path => config["reactNativePath"])
 
+  pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
+
   target 'day_3_axiosTests' do
     inherit! :complete
     # Pods for testing
