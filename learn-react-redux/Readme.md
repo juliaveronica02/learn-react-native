@@ -14,4 +14,17 @@
 * learn seperate div.
 
 ## lesson-5.
-* react-redux.
+* learn seprate folder.
+
+## lesson-6.
+* learn props in functional and class.
+
+## lesson-7.
+* initialize state.
+
+
+## NOTE!!
+* changing state:
+  1. do not mutate state directly.
+  2. change the state by referenching the previous state.
+  3. react will merge the old state with new state.
