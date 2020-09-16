@@ -21,6 +21,8 @@
 
 ## lesson-7.
 * initialize state.
+* change state (correct mutate state and wrong mutate state).
+* updating state with previous state (mutate: valid syntax to update state).
 
 
 ## NOTE!!
