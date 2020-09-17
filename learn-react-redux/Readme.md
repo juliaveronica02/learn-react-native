@@ -21,9 +21,15 @@
 
 ## lesson-7.
 * initialize state.
-* change state (correct mutate state and wrong mutate state).
-* updating state with previous state (mutate: valid syntax to update state).
+* changing state Note 1:change state (correct mutate state and wrong mutate state).
+* changing state Note 2: updating state with previous state (mutate: valid syntax to update state).
+* changing state Note 3: working with multiple state properties.
 
+## lesson-8.
+* passing down state as props to another component.
+
+## lesson-9.
+* conditional rendering in jsx.
 
 ## NOTE!!
 * changing state:

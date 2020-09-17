@@ -4,6 +4,7 @@ class Container1 extends Component {
     constructor(props) {
         super(props)
         this.state = {
+            stateprops1: "Our Initial State",
             stateProps2:5
         }
     }
