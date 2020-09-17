@@ -31,6 +31,9 @@
 ## lesson-9.
 * conditional rendering in jsx.
 
+## lesson-10.
+* ternary expressions.
+
 ## NOTE!!
 * changing state:
   1. do not mutate state directly.
