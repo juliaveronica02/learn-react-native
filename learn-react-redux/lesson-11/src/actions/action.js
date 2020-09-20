@@ -11,3 +11,17 @@ export const SUCCESS = {
 export const FAILURE = {
     type: ACTION_TYPES.FAILURE
 }
+
+// case: these actions will describe what will happen and will be dispatched from a react redux container into a container.
+
+export const success = () => {
+    return {
+        type: ACTION_TYPES.SUCCESS
+    }
+}
+
+export const failure = () => {
+    return {
+        type: ACTION_TYPES.FAILURE
+    }
+}

@@ -2,7 +2,7 @@ import * as ACTION_TYPES from "../actions/action_types"
 
 // setting variabel called initial state to javascript object.
 const initialState = {
-    stateProps1 = false
+    stateProps1: false
 }
 
 const rootReducer = (state = initialState, action) => {
