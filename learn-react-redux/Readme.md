@@ -37,6 +37,20 @@
 ## lesson-11.
 * learn react-redux.
 
+## react-hooks.
+* CRUD user.
+
+## review1.
+
+## react-hooks-axios.
+* fetching data CRUD using axios.
+
+## react-redux-app-starter.
+* basic react redux.
+
+## learn-data-json.
+
+
 ## NOTE!!
 * changing state:
   1. do not mutate state directly.
