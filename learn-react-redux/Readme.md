@@ -48,8 +48,8 @@
 ## react-redux-app-starter.
 * basic react redux.
 
-## learn-data-json.
-
+## learn-javascript.
+* variable, windows prompt and console.log.
 
 ## NOTE!!
 * changing state:
