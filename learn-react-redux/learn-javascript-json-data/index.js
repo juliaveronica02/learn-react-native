@@ -93,3 +93,10 @@ const DATA = {
         DATA.employeeBiodata5()
     }
 }
+// run in chrome-console: DATA.showAllData(DATA.employeeBiodata);
+// RESULT:
+// 1. firstname : John, lastname : Doe, job : QC, title : IT Support, age : umur: 22 Tahun, experience : experience: 2 Tahun.
+// 2. firstname : Anna, lastname : Smith, job : IT, title : Software Engineer, age : umur: 23 Tahun, experience : experience: 2 Tahun.
+// 3. firstname : Peter, lastname : Jones, job : Human Resource Development, title : UI/UX, age : umur: 24 tahun, experience : experience: 4 Tahun.
+// 4. firstname : Doni, lastname : Wong, job : Marketing and Custumer Service, title : DevOps, age : umur: 29 Tahun, experience : experience: 5 tahun.
+// 5. firstname : Slamet, lastname : Jordan, job : Maintenance and Facility, title : undefined, age : umur: 22 Tahun, experience : experience: 2 Tahun.
