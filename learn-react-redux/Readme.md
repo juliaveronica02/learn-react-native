@@ -51,6 +51,9 @@
 ## learn-javascript.
 * variable, windows prompt and console.log.
 
+## learn-javascript-json-data.
+* arrange employee data.
+
 ## NOTE!!
 * changing state:
   1. do not mutate state directly.
@@ -99,5 +102,3 @@
        isAuthenticated: true,
      }
    ```
-
-
