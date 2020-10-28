@@ -13,12 +13,13 @@ let human = {
         weight: 29,
         live: 'brazil',
     },
+    // run in google chrome type: human.
     printNameAndDogName: function () {
         const myName = this.name
         const dogName = this.pet.name
         debugger;
         console.log(`my name is ${myName}& my dog name is ${dogName}`)
-        // run in chrome: human.printNameAndDogName(console.log).
+        // run in google chrome type: human.printNameAndDogName(console.log).
         // result: my name is julia& my dog name is blacky.
     },
     printJob: (urutan) => {
@@ -26,7 +27,7 @@ let human = {
         const job = human.job[0]
         console.log(`my job is ${job}`);
     }
-    // run in chrome: human.printJob(console.log).
+    // run in google chrome type: human.printJob(console.log).
     // parameter.
     // my job is facebook.
 }
@@ -56,7 +57,7 @@ let jsonString = JSON.stringify(building)
 //JSON.Parse make JSON berbentuk string kembali ke asalnya/ke object
 let jsonParse = JSON.parse(jsonString)
 console.log(jsonParse)
-// run: JSON.parse(jsonString);
+// run in google chrome type: JSON.parse(jsonString);
 // result.
 /*
 {
